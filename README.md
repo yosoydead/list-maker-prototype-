@@ -30,4 +30,5 @@
     * 4. [x] Implement a **FAB** for the list details activity
     * 5. [x] Add string resources for the fields from the dialog opened by the new **FAB**
     * 6. [x] In the **MainActivity**, modify the intent opening method so that when the activity opens an intent, it also wants to hear back from it.
+* This is the prototype of an app that I will develop in the near future. Some of the features of this may be applied in the full app.
     
