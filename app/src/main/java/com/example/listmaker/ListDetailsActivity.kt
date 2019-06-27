@@ -1,5 +1,7 @@
 package com.example.listmaker
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -43,6 +45,16 @@ class ListDetailsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        val bundle = Bundle()
+        bundle.putParcelable(MainActivity.INTENT_LIST_KEY, list)
+
+        val intent = Intent()
+        intent.putExtras(bundle)
+        setResult(Activity.RESULT_OK, intent)
+        super.onBackPressed()
+    }
+
     private fun showCreateTaskDialog(){
         val taskEditText = EditText(this)
         taskEditText.inputType = InputType.TYPE_CLASS_TEXT
@@ -55,7 +67,7 @@ class ListDetailsActivity : AppCompatActivity() {
                 list.tasks.add(task)
 
                 val recyclerAdapter = listItemRecyclerView.adapter
-                recyclerAdapter.notifyItemInserted(list.tasks.size)
+                recyclerAdapter?.notifyItemInserted(list.tasks.size)
                 dialog.dismiss()
             })
             .create()

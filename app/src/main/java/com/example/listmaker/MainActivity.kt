@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(),
         //this key will be used by the intent to refer to a list whenever it needs
         //to pass one to the new activity
         val INTENT_LIST_KEY = "list"
+        val LIST_DETAILS_REQUEST_CODE = 123
     }
 
     //create a variable that will later hold a ref to the RecyclerView
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        var listItemRecyclerView = findViewById<RecyclerView>(R.id.list_items_recyclerview)
 
         //make the FAB display a dialog when tapped
         fab.setOnClickListener { view ->
@@ -71,6 +74,23 @@ class MainActivity : AppCompatActivity(),
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    //this function is called everytime an intent finishes and the calling activity wants some results back
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == LIST_DETAILS_REQUEST_CODE){
+            data?.let {
+                listDataManager.saveList(data.getParcelableExtra(INTENT_LIST_KEY))
+                updateLists()
+            }
+        }
+    }
+
+    private fun updateLists(){
+        val lists = listDataManager.readLists()
+        listRecyclerView.adapter = ListSelectionRecyclerViewAdapter(lists,this)
     }
 
     //this method will be used by the FAB onClick to display a dialog
@@ -125,6 +145,12 @@ class MainActivity : AppCompatActivity(),
         //the constant is going to be used to reference a certain list
         listDetailIntent.putExtra(INTENT_LIST_KEY, list)
 
-        startActivity(listDetailIntent)
+
+        //startActivity(listDetailIntent)
+
+        //start the activity and also wait for a result
+        //besides the intent, this method also needs a "request code"
+        //that code is used to identify the results passed from other activities
+        startActivityForResult(listDetailIntent, LIST_DETAILS_REQUEST_CODE)
     }
 }
