@@ -1,5 +1,6 @@
 package com.example.listmaker
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
@@ -13,7 +14,17 @@ import android.widget.EditText
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+            ListSelectionRecyclerViewAdapter.ListSelectionRecyclerViewListener{
+    override fun listItemClicked(list: TaskList) {
+        showListDetails(list)
+    }
+
+    companion object {
+        //this key will be used by the intent to refer to a list whenever it needs
+        //to pass one to the new activity
+        val INTENT_LIST_KEY = "list"
+    }
 
     //create a variable that will later hold a ref to the RecyclerView
     lateinit var listRecyclerView: RecyclerView
@@ -43,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         listRecyclerView.layoutManager = LinearLayoutManager(this)
 
         //the recyclerView needs an adapter to supply data to the list
-        listRecyclerView.adapter = ListSelectionRecyclerViewAdapter(lists)
+        listRecyclerView.adapter = ListSelectionRecyclerViewAdapter(lists, this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -95,8 +106,25 @@ class MainActivity : AppCompatActivity() {
             recycleradapter.addList(list)
 
             dialog.dismiss()
+
+            //after you enter the name of a list, create an intent and open
+            //a new screen with "details" where you could add new elements
+            showListDetails(list)
         })
 
         builder.create().show()
+    }
+
+    //a function that is used to start an intent
+    private fun showListDetails(list: TaskList){
+        //basically, this says that im on this screen and i want to go to that screen
+        val listDetailIntent = Intent(this, ListDetailsActivity::class.java)
+
+        //this method is used to put some data into the intent that is going to be started
+        //stores data as key-value pair
+        //the constant is going to be used to reference a certain list
+        listDetailIntent.putExtra(INTENT_LIST_KEY, list)
+
+        startActivity(listDetailIntent)
     }
 }

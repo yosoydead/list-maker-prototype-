@@ -6,9 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
+
 //made the recyclerView adapter to accept a list defined later in the lifecycle
-class ListSelectionRecyclerViewAdapter(val lists: ArrayList<TaskList>) :
+class ListSelectionRecyclerViewAdapter(val lists: ArrayList<TaskList>,
+                                       val clickListener: ListSelectionRecyclerViewListener) :
     RecyclerView.Adapter<ListSelectionRecyclerViewAdapter.ListSelectionViewHolder>() {
+
+    interface ListSelectionRecyclerViewListener{
+        fun listItemClicked(list: TaskList)
+    }
 
     //this is just some dummy data for the list to display
     //val listTitles = arrayOf("Shopping List", "Chores", "Android Tutorials")
@@ -39,6 +45,11 @@ class ListSelectionRecyclerViewAdapter(val lists: ArrayList<TaskList>) :
         if(holder != null){
             holder.listPosition.text = (position+1).toString()
             holder.listTitle.text = lists.get(position).name
+
+            //add an onClick listener to the new view created
+            holder.itemView.setOnClickListener{
+                clickListener.listItemClicked(lists.get(position))
+            }
         }
     }
 

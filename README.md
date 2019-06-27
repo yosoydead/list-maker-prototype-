@@ -21,5 +21,5 @@
     * 1. [x]  Create a new empty activity that will be used to navigate to a separate screen where you can add items to a list.
     * 2. [x] Register the new activity in the **AndroidManifest.xml** file
     * 3. [ ] Use **Intents** to navigate between the main activity and the second one
-    * 4. [ ] Use the **Parcelable** interface on the **TaskList** class to make its data able to be passed around between activities. An intent cannot pass around that type of object
-    * 5. [ ] Implement an **onClick** listener to each item in the RecyclerView
+    * 4. [x] Use the **Parcelable** interface on the **TaskList** class to make its data able to be passed around between activities. An intent cannot pass around that type of object
+    * 5. [x] Implement an **onClick** listener to each item in the RecyclerView
