@@ -3,18 +3,31 @@
 <!--this view will be used by the recycler view to display items
     for now, it will use just 2 TextViews: one to tell the position in the list,
         the other to tell the name of the item in the list-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal">
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        card_view:cardCornerRadius="2dp">
 
-    <TextView
+    <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/itemNumber" android:layout_margin="16dp"
-            tools:text="itemNumber"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/itemString" tools:text="itemString"
-            android:layout_margin="16dp"/>
-</LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemNumber"
+                android:layout_margin="16dp"
+                tools:text="itemNumber"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/itemString" tools:text="itemString"
+                android:layout_margin="16dp"/>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
