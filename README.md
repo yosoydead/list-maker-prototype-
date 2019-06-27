@@ -2,7 +2,7 @@
 * This app will use a **RecyclerView** instead of a ListView.
 * Step I:
     * 1. [x] **content_main.xml** is the actual layout that contains the initial TextView (it is imported into the **activity_main.xml**). Open it and replace the TextView with a **RecyclerView**. 
-    * 2. [ ] Implement the RecyclerView **Adapter** and **ViewHolder**. These are required components in order to make the RecyclerView functional.
+    * 2. [x] Implement the RecyclerView **Adapter** and **ViewHolder**. These are required components in order to make the RecyclerView functional.
         * The RecyclerView asks the **Adapter** for an item, or a **ViewHolder** at a given position
         * The **Adapter** gives the RecyclerView data it wants to show
         * The **ViewHolders** are the visual containers for the item. You tell the RecyclerView how each item should look like
