@@ -17,9 +17,16 @@
     * 4. [x] Create another class used to manage the lists
     * 5. [x] Use **shared preferences** to transfer data/save data
     * 6. [x] Use the manager class during the dialog menu
-* [ ] Step III:
+* [x] Step III:
     * 1. [x]  Create a new empty activity that will be used to navigate to a separate screen where you can add items to a list.
     * 2. [x] Register the new activity in the **AndroidManifest.xml** file
     * 3. [ ] Use **Intents** to navigate between the main activity and the second one
     * 4. [x] Use the **Parcelable** interface on the **TaskList** class to make its data able to be passed around between activities. An intent cannot pass around that type of object
     * 5. [x] Implement an **onClick** listener to each item in the RecyclerView
+* [ ] Step IV:
+    * 1. [ ] Add a **RecyclerView** to the layout of the newly created activity to let the user see the contents of the list
+    * 2. [ ] Implement the RecyclerView **Adapter** and **ViewHolder** of the new activity
+    * 3. [ ] Create a new layout file that will be used to show items from the list passed from intent
+    * 4. [ ] Implement a **FAB** for the list details activity
+    * 5. [ ] Add string resources for the fields from the dialog opened by the new **FAB**
+    
