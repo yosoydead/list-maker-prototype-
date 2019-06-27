@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     //create a variable that will later hold a ref to the RecyclerView
     lateinit var listRecyclerView: RecyclerView
 
+    //make a list manager instance
+    val listDataManager = ListDataManager(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        val lists = listDataManager.readLists()
         //when the main activity is created, initialize the variable for the RecyclerView
         listRecyclerView = findViewById(R.id.list_recyclerview)
 
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         listRecyclerView.layoutManager = LinearLayoutManager(this)
 
         //the recyclerView needs an adapter to supply data to the list
-        listRecyclerView.adapter = ListSelectionRecyclerViewAdapter()
+        listRecyclerView.adapter = ListSelectionRecyclerViewAdapter(lists)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,6 +85,15 @@ class MainActivity : AppCompatActivity() {
         //and something should occur
         //there can also be nevativeButton for cases such as cancellation
         builder.setPositiveButton(positiveButtonTitle, { dialog, i ->
+            //create a new TaskList instance and set its name to be the editText value
+            val list = TaskList(listTitleEditText.text.toString())
+
+            //save the list to shared pref
+            listDataManager.saveList(list)
+
+            val recycleradapter = listRecyclerView.adapter as ListSelectionRecyclerViewAdapter
+            recycleradapter.addList(list)
+
             dialog.dismiss()
         })
 

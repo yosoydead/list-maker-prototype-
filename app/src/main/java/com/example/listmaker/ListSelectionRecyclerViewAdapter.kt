@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class ListSelectionRecyclerViewAdapter :
+//made the recyclerView adapter to accept a list defined later in the lifecycle
+class ListSelectionRecyclerViewAdapter(val lists: ArrayList<TaskList>) :
     RecyclerView.Adapter<ListSelectionRecyclerViewAdapter.ListSelectionViewHolder>() {
 
     //this is just some dummy data for the list to display
-    val listTitles = arrayOf("Shopping List", "Chores", "Android Tutorials")
+    //val listTitles = arrayOf("Shopping List", "Chores", "Android Tutorials")
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSelectionViewHolder {
@@ -26,8 +27,10 @@ class ListSelectionRecyclerViewAdapter :
 
     //this function tells the RecyclerView how many items it will have to display
     //for now, return only the size of the dummy data array
+    //update this method to use the array given as param
     override fun getItemCount(): Int {
-        return listTitles.size
+//        return listTitles.size
+        return lists.size
     }
 
     //this method binds the desired data to the view holder at the specified position
@@ -35,8 +38,17 @@ class ListSelectionRecyclerViewAdapter :
     override fun onBindViewHolder(holder: ListSelectionViewHolder, position: Int) {
         if(holder != null){
             holder.listPosition.text = (position+1).toString()
-            holder.listTitle.text = listTitles[position]
+            holder.listTitle.text = lists.get(position).name
         }
+    }
+
+    //create a new method that sets the data that will be used by the recycler
+    fun addList(list: TaskList){
+        lists.add(list)
+
+        //inform the adapter that it should query its data and update the recyclerView
+        //now the data used will be the passed one in the classes constructor
+        notifyDataSetChanged()
     }
 
     inner class ListSelectionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

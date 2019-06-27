@@ -16,4 +16,4 @@
     * 3. [x] Create the model of a list of items
     * 4. [x] Create another class used to manage the lists
     * 5. [x] Use **shared preferences** to transfer data/save data
-    * 6. [ ] Use the manager class during the dialog menu
+    * 6. [x] Use the manager class during the dialog menu
