@@ -10,3 +10,9 @@
         * Either a new **ViewHolder** is returned or a new one is created
         * The **Adapter** then binds this **ViewHolder** to a data item at the given position
         * The **ViewHolder** is returned back to the RecyclerView for display
+* [ ] Step II:
+    * 1. [x] The floating action button has the image of an email button by defailt. Change it so the user knows it helps add an item to the list
+    * 2. [x] Make the FAB display a dialog instead of a SnackBar. Using that dialog, the user will be able to add items to the list. Use string resources for the values in the dialog
+    * 3. [ ] Create the model of a list of items
+    * 4. [ ] Create another class used to manage the lists
+    * 5. [ ] Use **shared preferences** to transfer data/save data

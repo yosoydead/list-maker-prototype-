@@ -2,11 +2,14 @@ package com.example.listmaker
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,9 +23,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        //make the FAB display a dialog when tapped
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+            showCreateListDialog()
+
         }
 
         //when the main activity is created, initialize the variable for the RecyclerView
@@ -50,5 +56,34 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    //this method will be used by the FAB onClick to display a dialog
+    private fun showCreateListDialog(){
+        //grab the string resources from the xml file
+        val dialogTitle = getString(R.string.name_of_list)
+        val positiveButtonTitle = getString(R.string.create_list)
+
+        //build the dialog
+        val builder = AlertDialog.Builder(this)
+        //inside the dialog, show an edit text field where the user can
+        //add the name of a list
+        val listTitleEditText = EditText(this)
+        //by specifying the input type, android will know what keyboard
+        //is most appropriate
+        listTitleEditText.inputType = InputType.TYPE_CLASS_TEXT
+
+        //set the attributes of the dialog
+        builder.setTitle(dialogTitle)
+        builder.setView(listTitleEditText)
+
+        //the setPositiveButton method tells the dialog that a positive action happened
+        //and something should occur
+        //there can also be nevativeButton for cases such as cancellation
+        builder.setPositiveButton(positiveButtonTitle, { dialog, i ->
+            dialog.dismiss()
+        })
+
+        builder.create().show()
     }
 }
