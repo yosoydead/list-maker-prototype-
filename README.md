@@ -13,6 +13,7 @@
 * [ ] Step II:
     * 1. [x] The floating action button has the image of an email button by defailt. Change it so the user knows it helps add an item to the list
     * 2. [x] Make the FAB display a dialog instead of a SnackBar. Using that dialog, the user will be able to add items to the list. Use string resources for the values in the dialog
-    * 3. [ ] Create the model of a list of items
-    * 4. [ ] Create another class used to manage the lists
-    * 5. [ ] Use **shared preferences** to transfer data/save data
+    * 3. [x] Create the model of a list of items
+    * 4. [x] Create another class used to manage the lists
+    * 5. [x] Use **shared preferences** to transfer data/save data
+    * 6. [ ] Use the manager class during the dialog menu
