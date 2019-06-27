@@ -25,8 +25,9 @@
     * 5. [x] Implement an **onClick** listener to each item in the RecyclerView
 * [ ] Step IV:
     * 1. [x] Add a **RecyclerView** to the layout of the newly created activity to let the user see the contents of the list
-    * 2. [ ] Implement the RecyclerView **Adapter** and **ViewHolder** of the new activity
-    * 3. [ ] Create a new layout file that will be used to show items from the list passed from intent
-    * 4. [ ] Implement a **FAB** for the list details activity
-    * 5. [ ] Add string resources for the fields from the dialog opened by the new **FAB**
+    * 2. [x] Implement the RecyclerView **Adapter** and **ViewHolder** of the new activity
+    * 3. [x] Create a new layout file that will be used to show items from the list passed from intent
+    * 4. [x] Implement a **FAB** for the list details activity
+    * 5. [x] Add string resources for the fields from the dialog opened by the new **FAB**
+    * 6. [ ] In the **MainActivity**, modify the intent opening method so that when the activity opens an intent, it also wants to hear back from it.
     
