@@ -24,7 +24,7 @@
     * 4. [x] Use the **Parcelable** interface on the **TaskList** class to make its data able to be passed around between activities. An intent cannot pass around that type of object
     * 5. [x] Implement an **onClick** listener to each item in the RecyclerView
 * [ ] Step IV:
-    * 1. [ ] Add a **RecyclerView** to the layout of the newly created activity to let the user see the contents of the list
+    * 1. [x] Add a **RecyclerView** to the layout of the newly created activity to let the user see the contents of the list
     * 2. [ ] Implement the RecyclerView **Adapter** and **ViewHolder** of the new activity
     * 3. [ ] Create a new layout file that will be used to show items from the list passed from intent
     * 4. [ ] Implement a **FAB** for the list details activity
