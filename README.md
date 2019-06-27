@@ -1,7 +1,7 @@
 * The name of this project is: ListMaker. It will be a to-do list organizer. (book **Android apprentice**)
 * This app will use a **RecyclerView** instead of a ListView.
 * Step I:
-    * 1. [ ] **content_main.xml** is the actual layout that contains the initial TextView (it is imported into the **activity_main.xml**). Open it and replace the TextView with a **RecyclerView**. 
+    * 1. [x] **content_main.xml** is the actual layout that contains the initial TextView (it is imported into the **activity_main.xml**). Open it and replace the TextView with a **RecyclerView**. 
     * 2. [ ] Implement the RecyclerView **Adapter** and **ViewHolder**. These are required components in order to make the RecyclerView functional.
         * The RecyclerView asks the **Adapter** for an item, or a **ViewHolder** at a given position
         * The **Adapter** gives the RecyclerView data it wants to show
